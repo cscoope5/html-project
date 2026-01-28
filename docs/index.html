@@ -5,16 +5,15 @@
 
   <style>
     body {
-      <canvas id="sakura"></canvas>
       background-color: LavenderBlush;
       text-align: center;
       font-family: Arial, sans-serif;
       margin: 40px;
-    
     }
 
-    #sakura{
-      position:fixed;
+    /* Canvas sits behind everything */
+    #sakura {
+      position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
@@ -25,6 +24,10 @@
 </head>
 
 <body>
+
+<!-- 🌸 Sakura canvas goes FIRST in the body -->
+<canvas id="sakura"></canvas>
+
 <h1>Welcome to my page</h1>
 <h3 lang="ja">僕のヒーローアカデミア</h3>
 
@@ -41,6 +44,8 @@
 <img src="profile.jpg" alt="Profile image" width="300">
 
 <hr>
+
+<!-- 🌸 Animation script goes LAST, before </body> -->
 <script>
   const canvas = document.getElementById("sakura");
   const ctx = canvas.getContext("2d");
@@ -74,7 +79,6 @@
     ctx.translate(p.x, p.y);
     ctx.rotate(p.rot);
 
-    // simple petal shape
     ctx.beginPath();
     ctx.moveTo(0, -p.r);
     ctx.quadraticCurveTo(p.r, -p.r, p.r * 0.7, 0);
@@ -83,7 +87,7 @@
     ctx.quadraticCurveTo(-p.r, -p.r, 0, -p.r);
     ctx.closePath();
 
-    ctx.fillStyle = "rgba(255, 182, 193, 0.6)"; // soft pink
+    ctx.fillStyle = "rgba(255, 182, 193, 0.6)";
     ctx.fill();
     ctx.restore();
   }
@@ -110,5 +114,6 @@
   }
   tick();
 </script>
+
 </body>
 </html>
